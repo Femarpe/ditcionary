@@ -6,7 +6,7 @@ public class ImpDictionary<K, V> implements Dictionary<K, V> {
     List Keys = new ArrayList();
     List Values = new ArrayList();
 
-
+    //devuelve la el largo de la lista
     private int getSize() {
         int leng = 0;
         int kSize = Keys.size();
@@ -17,7 +17,8 @@ public class ImpDictionary<K, V> implements Dictionary<K, V> {
         return leng;
     }
 
-
+    //este metodo añade valores a las listas
+    //si la "key" ya existe actualiza el "value"
     public void set(K key, V value) {
         if (getSize() == 0) {
             Keys.add(key);
@@ -34,6 +35,8 @@ public class ImpDictionary<K, V> implements Dictionary<K, V> {
         }
     }
 
+    //este metodo busca el "value" que corresponda
+    // a la "key" que le haya pasado
     public V get(K key) {
         V valueToReturn = null;
         for (int i = 0; i < getSize(); i++) {
@@ -45,6 +48,8 @@ public class ImpDictionary<K, V> implements Dictionary<K, V> {
         return valueToReturn;
     }
 
+    //este metodo elimina tanto la "key" y el "value" corresponda
+    //a la "key" que le haya pasado
     public void remove(K key) {
         for (int i = 0; i < getSize(); i++) {
             if (Keys.get(i).equals(key)) {
@@ -54,12 +59,13 @@ public class ImpDictionary<K, V> implements Dictionary<K, V> {
         }
     }
 
-
+    //limpia las listas
     public void clear() {
         Keys.clear();
         Values.clear();
     }
 
+    //este metodo imprime por consola los datos intoducidos en el diccionario
     public void printDitcionary() {
         for (int i = 0; i < getSize(); i++) {
             System.out.print(Keys.get(i) + " - ");
@@ -67,14 +73,16 @@ public class ImpDictionary<K, V> implements Dictionary<K, V> {
         }
     }
 
+    //hace algo
     public void forEach(Iterator<K, V> it) {
         for (int i = 0; i < getSize(); i++) {
             K key = (K) Keys.get(i);
             V value = (V) Values.get(i);
-            it.iterator(key,value);
+            it.iterator(key, value);
         }
     }
 
+    //este metodo añade el valor que le has pasado en un objeto del "value"
     public void setPropertyValue(K key, String fielName, Object value) {
 
         Field field = null;
@@ -88,7 +96,7 @@ public class ImpDictionary<K, V> implements Dictionary<K, V> {
         }
     }
 
-
+    //este metodo te devuelve la posicion de la "key" que le has pasado
     private int getIndexof(K key) {
 
         boolean itsIinside = false;
